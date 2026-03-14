@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Den — Portfolio</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <canvas class="webgl"></canvas>
+
+  <!-- Loading screen -->
+  <div id="loading-screen">
+    <div class="loader-content">
+      <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
+      <p class="loader-text">Loading the Den...</p>
+    </div>
+  </div>
+
+  <!-- Navigation dots -->
+  <nav id="zone-nav">
+    <button class="nav-dot active" data-zone="overview" title="Overview"></button>
+    <button class="nav-dot" data-zone="gaming" title="Gaming Corner"></button>
+    <button class="nav-dot" data-zone="art" title="Art Wall"></button>
+    <button class="nav-dot" data-zone="desk" title="Work Desk"></button>
+    <button class="nav-dot" data-zone="sports" title="Sports Shelf"></button>
+  </nav>
+
+  <!-- Zone label -->
+  <div id="zone-label"></div>
+
+  <!-- Info panel -->
+  <aside id="info-panel">
+    <button id="info-close" title="Close">✕</button>
+    <div id="info-content"></div>
+  </aside>
+
+  <!-- Audio toggle -->
+  <button id="audio-btn" title="Toggle ambient audio">♪</button>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
