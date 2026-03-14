@@ -9,9 +9,9 @@ export default class Room {
   }
 
   _build() {
-    const wallMat = new THREE.MeshStandardMaterial({ color: '#1a1730', roughness: 0.9, metalness: 0 })
-    const floorMat = new THREE.MeshStandardMaterial({ color: '#0f0e1a', roughness: 1.0, metalness: 0 })
-    const trimMat = new THREE.MeshStandardMaterial({ color: '#2a2545', roughness: 0.7 })
+    const wallMat = new THREE.MeshStandardMaterial({ color: '#2e2a45', roughness: 0.85, metalness: 0 })
+    const floorMat = new THREE.MeshStandardMaterial({ color: '#1c1a2e', roughness: 0.95, metalness: 0 })
+    const trimMat = new THREE.MeshStandardMaterial({ color: '#3d3660', roughness: 0.7 })
 
     // Floor
     const floor = new THREE.Mesh(new THREE.PlaneGeometry(12, 10), floorMat)
@@ -20,7 +20,7 @@ export default class Room {
     this.scene.add(floor)
 
     // Floor rug (center accent)
-    const rugMat = new THREE.MeshStandardMaterial({ color: '#2d1f0f', roughness: 1.0 })
+    const rugMat = new THREE.MeshStandardMaterial({ color: '#4a2e12', roughness: 1.0 })
     const rug = new THREE.Mesh(new THREE.PlaneGeometry(7, 4), rugMat)
     rug.rotation.x = -Math.PI / 2
     rug.position.set(-0.5, 0.001, 0.5)
@@ -44,7 +44,7 @@ export default class Room {
     this.scene.add(rightWall)
 
     // Ceiling (subtle)
-    const ceilMat = new THREE.MeshStandardMaterial({ color: '#12101e', roughness: 1.0 })
+    const ceilMat = new THREE.MeshStandardMaterial({ color: '#1e1c30', roughness: 1.0 })
     const ceiling = new THREE.Mesh(new THREE.PlaneGeometry(12, 10), ceilMat)
     ceiling.rotation.x = Math.PI / 2
     ceiling.position.set(0, 5, 0)
