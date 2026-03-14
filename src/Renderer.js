@@ -20,10 +20,10 @@ export default class Renderer {
     })
     this.instance.setSize(this.sizes.width, this.sizes.height)
     this.instance.setPixelRatio(this.sizes.pixelRatio)
-    this.instance.setClearColor('#0d0d1a')
+    this.instance.setClearColor('#0a0818')
     this.instance.outputColorSpace = THREE.SRGBColorSpace
-    this.instance.toneMapping = THREE.ACESFilmicToneMapping
-    this.instance.toneMappingExposure = 1.2
+    this.instance.toneMapping = THREE.ReinhardToneMapping
+    this.instance.toneMappingExposure = 1.8
     this.instance.shadowMap.enabled = false // using baked lighting
 
     Experience.getInstance().sizes.on('resize', () => {

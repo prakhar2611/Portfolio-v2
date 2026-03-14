@@ -4,28 +4,29 @@ import Experience from './Experience.js'
 
 export const ZONES = {
   overview: {
-    pos: [0, 9, 9],
-    target: [0, 0, 0],
+    // Front-elevated angle matching reference image — sees full room
+    pos: [1, 6.5, 11],
+    target: [0, 1.2, -1],
     label: 'Welcome'
   },
   gaming: {
-    pos: [-3.5, 3.5, 5],
-    target: [-3, 0.5, -0.5],
+    pos: [-3.5, 3.5, 5.5],
+    target: [-2.5, 1.0, -1],
     label: 'The Gaming Corner'
   },
   art: {
-    pos: [3.5, 3.5, 4.5],
-    target: [3, 1, -0.5],
+    pos: [4.5, 3.5, 5],
+    target: [4, 1.5, -1],
     label: 'The Art Wall'
   },
   desk: {
-    pos: [0, 3, 4.5],
-    target: [0, 1, -1],
+    pos: [1.2, 3, 5],
+    target: [1.2, 1.2, -1],
     label: 'The Work Desk'
   },
   sports: {
-    pos: [3, 3.5, 4.5],
-    target: [3, 1.5, -1],
+    pos: [4, 3.5, 5],
+    target: [3.5, 1.5, -1.5],
     label: 'The Trophy Shelf'
   },
 }

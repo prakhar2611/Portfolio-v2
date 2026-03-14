@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import { RectAreaLightHelper } from 'three/addons/helpers/RectAreaLightHelper.js'
 import { RectAreaLightUniformsLib } from 'three/addons/lights/RectAreaLightUniformsLib.js'
 import Experience from '../Experience.js'
 
@@ -13,66 +12,59 @@ export default class Lights {
   }
 
   _add() {
-    // Main ambient — much brighter base so room is visible
-    const ambient = new THREE.AmbientLight('#ffffff', 1.2)
+    // Very dark base ambient — room should be moody/dim
+    const ambient = new THREE.AmbientLight('#1a0f2e', 0.5)
     this.scene.add(ambient)
 
-    // Hemisphere — warm ceiling / cool floor fill
-    const hemi = new THREE.HemisphereLight('#ffeedd', '#223366', 1.0)
+    // Subtle cool purple hemisphere — mimics night sky through windows
+    const hemi = new THREE.HemisphereLight('#2a1f5e', '#0a0510', 0.4)
     this.scene.add(hemi)
 
-    // Central ceiling fill — lights the whole room evenly
-    const ceilFill = new THREE.PointLight('#fff8f0', 3.0, 18)
-    ceilFill.position.set(0, 4.5, 0)
-    this.scene.add(ceilFill)
+    // ── MAIN FLOOR LAMP (left side of room) ──────────────────────────
+    // This is the dominant warm orange light like in the reference
+    this.floorLamp = new THREE.PointLight('#ff9a3c', 8, 9, 1.5)
+    this.floorLamp.position.set(-3.5, 2.5, 0.5)
+    this.scene.add(this.floorLamp)
 
-    // Second ceiling fill towards back
-    const ceilFill2 = new THREE.PointLight('#ffe0c0', 2.0, 14)
-    ceilFill2.position.set(0, 4.5, -2)
-    this.scene.add(ceilFill2)
+    // Second warm fill — spreads the lamp glow across the rug/floor
+    const lampGlow = new THREE.PointLight('#ff7020', 4, 7, 2.0)
+    lampGlow.position.set(-3, 0.8, 1.0)
+    this.scene.add(lampGlow)
 
-    // ── Gaming Corner ────────────────────────────
-    // TV screen glow (cool blue/purple)
-    this.tvLight = new THREE.RectAreaLight('#7788ff', 6, 2.2, 1.4)
-    this.tvLight.position.set(-3.5, 1.2, -2.3)
-    this.tvLight.lookAt(-3.5, 1.2, 0)
+    // ── TV SCREEN GLOW (center-left) ─────────────────────────────────
+    // Blue/cyan screen light facing outward
+    this.tvLight = new THREE.RectAreaLight('#4488ff', 5, 2.4, 1.5)
+    this.tvLight.position.set(-1.5, 1.4, -2.1)
+    this.tvLight.lookAt(-1.5, 1.4, 2)
     this.scene.add(this.tvLight)
 
-    // Warm floor lamp next to couch
-    const couchLamp = new THREE.PointLight('#ff8c42', 5, 6)
-    couchLamp.position.set(-4.8, 1.8, -0.5)
-    this.scene.add(couchLamp)
+    // Small point light in front of TV to bounce off rug/floor
+    const tvBounce = new THREE.PointLight('#3366cc', 2, 3.5, 2.0)
+    tvBounce.position.set(-1.5, 0.5, -1.0)
+    this.scene.add(tvBounce)
 
-    // ── Art Wall ─────────────────────────────────
-    // Warm gallery light above paintings
-    const artLamp = new THREE.SpotLight('#ffe4b5', 8, 8, Math.PI / 4, 0.4)
-    artLamp.position.set(3, 4.0, 0.5)
-    artLamp.target.position.set(3.5, 0.5, -2.5)
-    this.scene.add(artLamp)
-    this.scene.add(artLamp.target)
-
-    // Extra fill for art wall
-    const artFill = new THREE.PointLight('#fff0d0', 3, 7)
-    artFill.position.set(3.5, 3, -1)
-    this.scene.add(artFill)
-
-    // ── Work Desk ─────────────────────────────────
-    // Dual monitor glow (purple/blue)
-    this.monitorLight = new THREE.RectAreaLight('#6677ff', 5, 2.6, 1.2)
-    this.monitorLight.position.set(0, 1.6, -2.0)
-    this.monitorLight.lookAt(0, 1.6, 0)
+    // ── DUAL MONITOR GLOW (center-right desk) ────────────────────────
+    this.monitorLight = new THREE.RectAreaLight('#5577ff', 4, 2.8, 1.2)
+    this.monitorLight.position.set(1.2, 1.6, -2.0)
+    this.monitorLight.lookAt(1.2, 1.6, 2)
     this.scene.add(this.monitorLight)
 
-    // Desk lamp
-    const deskLamp = new THREE.PointLight('#fff5e0', 4, 5)
-    deskLamp.position.set(-0.8, 2.2, -1.0)
-    this.scene.add(deskLamp)
+    const deskFill = new THREE.PointLight('#334488', 2.5, 4, 2.0)
+    deskFill.position.set(1.2, 1.0, -0.8)
+    this.scene.add(deskFill)
 
-    // ── Sports Shelf ──────────────────────────────
-    const trophySpot = new THREE.SpotLight('#ffffff', 6, 8, Math.PI / 5, 0.4)
-    trophySpot.position.set(3.2, 4, 1)
-    trophySpot.target.position.set(3, 1.5, -2)
-    this.scene.add(trophySpot)
-    this.scene.add(trophySpot.target)
+    // ── ART WALL LAMP ────────────────────────────────────────────────
+    // Warm spotlight illuminating the paintings
+    const artSpot = new THREE.SpotLight('#ffddaa', 5, 7, Math.PI / 4, 0.5)
+    artSpot.position.set(4.5, 4.2, 0.5)
+    artSpot.target.position.set(4.5, 1.5, -2.5)
+    this.scene.add(artSpot)
+    this.scene.add(artSpot.target)
+
+    // ── SUBTLE BACK-WALL FILL ─────────────────────────────────────────
+    // Very dim warm fill so back wall isn't totally black
+    const backFill = new THREE.PointLight('#3a1a0a', 1.5, 12, 2.0)
+    backFill.position.set(0, 3.5, -1)
+    this.scene.add(backFill)
   }
 }
