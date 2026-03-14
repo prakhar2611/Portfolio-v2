@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Den — Portfolio</title>
+  <title>Prakhar Gupta — The Den</title>
+
+  <!-- Zone-specific Google Fonts -->
+  <!-- Overview: Syne (techy + artistic display) -->
+  <!-- Gaming: Nunito (rounded, relaxed) -->
+  <!-- Art: Cormorant Garamond (elegant gallery) -->
+  <!-- Desk: JetBrains Mono + Inter (code + clean) -->
+  <!-- Sports: Barlow Condensed (bold athletic) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Nunito:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
@@ -12,18 +23,19 @@
   <!-- Loading screen -->
   <div id="loading-screen">
     <div class="loader-content">
+      <p class="loader-name">PRAKHAR GUPTA</p>
       <div class="loader-bar-wrap"><div class="loader-bar" id="loader-bar"></div></div>
-      <p class="loader-text">Loading the Den...</p>
+      <p class="loader-text">Setting up the den...</p>
     </div>
   </div>
 
   <!-- Navigation dots -->
   <nav id="zone-nav">
-    <button class="nav-dot active" data-zone="overview" title="Overview"></button>
+    <button class="nav-dot active" data-zone="overview" title="Welcome"></button>
     <button class="nav-dot" data-zone="gaming" title="Gaming Corner"></button>
     <button class="nav-dot" data-zone="art" title="Art Wall"></button>
     <button class="nav-dot" data-zone="desk" title="Work Desk"></button>
-    <button class="nav-dot" data-zone="sports" title="Sports Shelf"></button>
+    <button class="nav-dot" data-zone="sports" title="Trophy Shelf"></button>
   </nav>
 
   <!-- Zone label -->
